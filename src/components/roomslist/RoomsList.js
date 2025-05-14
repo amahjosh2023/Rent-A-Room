@@ -36,39 +36,46 @@ function RoomsList() {
     ]);
 
     return (
-        <div classname="rooms-page">
-<div classname="rooms-header">
-<h1>Available Rooms</h1>
-Find your perfect temporary home
-<div classname="search-container">
-<input classname="search-input" placeholder="Search by location..." type="text"/>
-<button classname="search-button">Search</button>
-</div>
-</div>
-<div classname="rooms-grid">
+        <div className="rooms-page">
+            <div className="rooms-header">
+                <h1>Available Rooms</h1>
+                <p>Find your perfect temporary home</p>
+                <div className="search-container">
+                    <input className="search-input" placeholder="Search by location..." type="text" />
+                    <button className="search-button">Search</button>
+                </div>
+            </div>
+            <div className="rooms-grid">
                 {rooms.map((room) => (
-                    <div classname="room-card" key="{room.id}">
-<div "center"="" "cover",="" `url("${room.imageurl}")`,="" backgroundimage:="" backgroundposition:="" backgroundsize:="" classname="room-image" style="{{" }}="">
-<div classname="price-tag">${room.price}/night</div>
-</div>
-<div classname="room-details">
-<h2>{room.name}</h2>
-<div classname="location">
-📍
+                    <div className="room-card" key={room.id}>
+                        <div
+                            className="room-image"
+                            style={{
+                                backgroundImage: `url("${room.imageUrl}")`,
+                                backgroundSize: "cover",
+                                backgroundPosition: "center"
+                            }}
+                        >
+                            <div className="price-tag">${room.price}/night</div>
+                        </div>
+                        <div className="room-details">
+                            <h2>{room.name}</h2>
+                            <div className="location">
+                                <span className="location-icon">📍</span>
                                 {room.location}, {room.state}
                             </div>
-{room.description}
-<div classname="amenities">
+                            <p className="description">{room.description}</p>
+                            <div className="amenities">
                                 {room.amenities.map((amenity, index) => (
-                                    {amenity}
+                                    <span key={index} className="amenity-tag">{amenity}</span>
                                 ))}
                             </div>
-<button classname="book-button">Book Now</button>
-</div>
-</div>
+                            <button className="book-button">Book Now</button>
+                        </div>
+                    </div>
                 ))}
             </div>
-</div>
+        </div>
     );
 }
 
